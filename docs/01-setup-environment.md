@@ -388,14 +388,6 @@ code --install-extension openai.codex
 
 Работает с подпиской ChatGPT Plus или OpenAI API.
 
-#### GitHub Copilot
-
-```bash
-code --install-extension github.copilot
-```
-
-Стоимость: $10/месяц (бесплатно для студентов и участников open-source проектов).
-
 ### CLI-инструменты через API (опционально)
 
 > ⚠️ **Внимание:** Claude Code CLI и Codex CLI требуют **API-доступа** и **оплаты отдельно от подписки**.

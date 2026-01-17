@@ -408,7 +408,7 @@ Write-Host ""
 
 Write-Host "2. Установите расширения VS Code:" -ForegroundColor Yellow
 Write-Host "   code --install-extension anthropic.claude-code" -ForegroundColor Cyan
-Write-Host "   code --install-extension github.copilot" -ForegroundColor Cyan
+Write-Host "   code --install-extension openai.codex" -ForegroundColor Cyan
 Write-Host ""
 
 Write-Host "3. Авторизуйтесь в GitHub CLI:" -ForegroundColor Yellow

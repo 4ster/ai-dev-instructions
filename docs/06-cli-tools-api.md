@@ -27,7 +27,7 @@ CLI-инструменты (Claude Code CLI, Codex CLI) подходят, есл
 **Если вы просто хотите использовать AI для разработки:**
 - Используйте **Claude Desktop** (если есть подписка Claude Pro)
 - Используйте **расширение Claude for VS Code**
-- Используйте **GitHub Copilot** или **ChatGPT в VS Code**
+- Используйте **ChatGPT Desktop** или расширения для VS Code
 
 ---
 
@@ -227,14 +227,10 @@ source ~/.bashrc
   - Работает с подпиской Claude Pro
   - Установка: `code --install-extension anthropic.claude-code`
 
-- **GitHub Copilot**
-  - Издатель: GitHub
-  - Стоимость: $10/месяц или бесплатно для студентов
-  - Установка: `code --install-extension github.copilot`
-
-- **ChatGPT для VS Code**
-  - Различные расширения от сообщества
-  - Некоторые работают с ChatGPT Plus
+- **Codex для VS Code**
+  - Издатель: OpenAI
+  - Работает с подпиской ChatGPT Plus или OpenAI API
+  - Установка: `code --install-extension openai.codex`
 
 ---
 

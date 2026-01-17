@@ -202,7 +202,7 @@ Write-Host ""
 
 Write-Host "  → Установите расширения VS Code:" -ForegroundColor Cyan
 Write-Host "    code --install-extension anthropic.claude-code" -ForegroundColor Gray
-Write-Host "    code --install-extension github.copilot" -ForegroundColor Gray
+Write-Host "    code --install-extension openai.codex" -ForegroundColor Gray
 Write-Host ""
 
 if ($ghOk) {
