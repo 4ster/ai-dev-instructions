@@ -5,7 +5,7 @@
 # ⚠️ ВАЖНО: Эти инструменты требуют API-доступа и оплаты отдельно от подписки!
 #
 # Перед использованием:
-# 1. Получите API-ключ Anthropic: https://platform.anthropic.com/
+# 1. Получите API-ключ Anthropic: https://platform.claude.com/
 # 2. Получите API-ключ OpenAI: https://platform.openai.com/
 # 3. Прочитайте инструкцию: 06-cli-tools-api.md
 #
@@ -120,7 +120,7 @@ Write-Host ""
 
 # Anthropic API Key
 Write-Host "1. Anthropic API Key (для Claude Code CLI)" -ForegroundColor Cyan
-Write-Host "   → Получить: https://platform.anthropic.com/settings/keys" -ForegroundColor Gray
+Write-Host "   → Получить: https://platform.claude.com/settings/keys" -ForegroundColor Gray
 Write-Host "   → Формат: sk-ant-..." -ForegroundColor Gray
 Write-Host ""
 $anthropicKey = Read-Host "   Введите ANTHROPIC_API_KEY (или Enter для пропуска)"
@@ -189,11 +189,11 @@ Write-Host ""
 
 Write-Host "⚠️  Важно:" -ForegroundColor Yellow
 Write-Host "  • Установите лимиты расходов в консолях API" -ForegroundColor White
-Write-Host "  • Anthropic: https://platform.anthropic.com/settings/limits" -ForegroundColor Gray
+Write-Host "  • Anthropic: https://platform.claude.com/settings/limits" -ForegroundColor Gray
 Write-Host "  • OpenAI: https://platform.openai.com/settings/organization/limits" -ForegroundColor Gray
 Write-Host ""
 Write-Host "  • Мониторьте использование API:" -ForegroundColor White
-Write-Host "  • Anthropic: https://platform.anthropic.com/settings/usage" -ForegroundColor Gray
+Write-Host "  • Anthropic: https://platform.claude.com/settings/usage" -ForegroundColor Gray
 Write-Host "  • OpenAI: https://platform.openai.com/usage" -ForegroundColor Gray
 Write-Host ""
 

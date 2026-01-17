@@ -70,7 +70,7 @@
 1. **Прочитайте инструкцию** [docs/06-cli-tools-api.md](../docs/06-cli-tools-api.md)
 
 2. **Получите API-ключи:**
-   - Anthropic: https://platform.anthropic.com/settings/keys
+   - Anthropic: https://platform.claude.com/settings/keys
    - OpenAI: https://platform.openai.com/api-keys
 
 3. **Запустите скрипт:**
@@ -329,7 +329,7 @@ npm uninstall -g @anthropic-ai/mcp-server-memory
 ```
 
 Получите ключи:
-- Anthropic: https://platform.anthropic.com/
+- Anthropic: https://platform.claude.com/
 - OpenAI: https://platform.openai.com/
 
 ### 2. Авторизуйтесь в сервисах
