@@ -48,20 +48,9 @@ $codeOk = Test-Tool "code" "--version" "VS Code"
 Write-Host ""
 
 # =============================================================================
-# 2. AI CLI инструменты
+# 2. Внешние CLI
 # =============================================================================
-Write-Host "[2] AI CLI инструменты" -ForegroundColor Yellow
-Write-Host ""
-
-$claudeOk = Test-Tool "claude" "--version" "Claude Code CLI"
-$codexOk = Test-Tool "codex" "--version" "Codex CLI"
-
-Write-Host ""
-
-# =============================================================================
-# 3. Внешние CLI
-# =============================================================================
-Write-Host "[3] Внешние CLI" -ForegroundColor Yellow
+Write-Host "[2] Внешние CLI" -ForegroundColor Yellow
 Write-Host ""
 
 $ghOk = Test-Tool "gh" "--version" "GitHub CLI"
@@ -70,33 +59,9 @@ $firebaseOk = Test-Tool "firebase" "--version" "Firebase CLI"
 Write-Host ""
 
 # =============================================================================
-# 4. Проверка API ключей
+# 3. Проверка конфигурации Claude Desktop (MCP)
 # =============================================================================
-Write-Host "[4] Переменные окружения" -ForegroundColor Yellow
-Write-Host ""
-
-$anthropicKey = $env:ANTHROPIC_API_KEY
-if ($anthropicKey) {
-    $maskedKey = $anthropicKey.Substring(0, [Math]::Min(10, $anthropicKey.Length)) + "..."
-    Write-Host "  ✓ ANTHROPIC_API_KEY - $maskedKey" -ForegroundColor Green
-} else {
-    Write-Host "  ✗ ANTHROPIC_API_KEY - не установлен" -ForegroundColor Red
-}
-
-$openaiKey = $env:OPENAI_API_KEY
-if ($openaiKey) {
-    $maskedKey = $openaiKey.Substring(0, [Math]::Min(10, $openaiKey.Length)) + "..."
-    Write-Host "  ✓ OPENAI_API_KEY - $maskedKey" -ForegroundColor Green
-} else {
-    Write-Host "  ✗ OPENAI_API_KEY - не установлен" -ForegroundColor Red
-}
-
-Write-Host ""
-
-# =============================================================================
-# 5. Проверка конфигурации Claude
-# =============================================================================
-Write-Host "[5] Конфигурация Claude Code" -ForegroundColor Yellow
+Write-Host "[3] Конфигурация Claude Desktop (MCP)" -ForegroundColor Yellow
 Write-Host ""
 
 $claudeConfigPath = "$env:APPDATA\claude"
@@ -129,7 +94,7 @@ Write-Host ""
 # =============================================================================
 # 6. Проверка авторизации
 # =============================================================================
-Write-Host "[6] Авторизация в сервисах" -ForegroundColor Yellow
+Write-Host "[4] Авторизация в сервисах" -ForegroundColor Yellow
 Write-Host ""
 
 # GitHub
@@ -167,7 +132,7 @@ Write-Host ""
 # =============================================================================
 # 7. Проверка расширений VS Code
 # =============================================================================
-Write-Host "[7] Расширения VS Code" -ForegroundColor Yellow
+Write-Host "[5] Расширения VS Code" -ForegroundColor Yellow
 Write-Host ""
 
 if ($codeOk) {
@@ -202,17 +167,14 @@ Write-Host "  Итоговая статистика" -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host ""
 
-$totalChecks = 8
+$totalChecks = 5
 $passedChecks = 0
 
 if ($nodeOk) { $passedChecks++ }
 if ($gitOk) { $passedChecks++ }
 if ($codeOk) { $passedChecks++ }
-if ($claudeOk) { $passedChecks++ }
-if ($codexOk) { $passedChecks++ }
 if ($ghOk) { $passedChecks++ }
 if ($firebaseOk) { $passedChecks++ }
-if ($anthropicKey) { $passedChecks++ }
 
 $percentage = [math]::Round(($passedChecks / $totalChecks) * 100)
 
@@ -220,44 +182,50 @@ Write-Host "Установлено: $passedChecks из $totalChecks инстру
 Write-Host ""
 
 if ($passedChecks -eq $totalChecks) {
-    Write-Host "🎉 Отлично! Все инструменты установлены и настроены!" -ForegroundColor Green
-} elseif ($passedChecks -ge 6) {
-    Write-Host "✅ Хорошо! Большинство инструментов установлено." -ForegroundColor Yellow
-    Write-Host "   Настройте оставшиеся для полной функциональности." -ForegroundColor Yellow
+    Write-Host "🎉 Отлично! Все базовые инструменты установлены!" -ForegroundColor Green
+} elseif ($passedChecks -ge 3) {
+    Write-Host "✅ Хорошо! Основные инструменты установлены." -ForegroundColor Yellow
+    Write-Host "   Установите оставшиеся по необходимости." -ForegroundColor Yellow
 } else {
-    Write-Host "⚠️  Необходимо установить недостающие инструменты." -ForegroundColor Red
+    Write-Host "⚠️  Необходимо установить базовые инструменты." -ForegroundColor Red
     Write-Host "   Используйте скрипт windows-setup.ps1 для автоматической установки." -ForegroundColor Yellow
 }
 
 Write-Host ""
-Write-Host "Следующие шаги:" -ForegroundColor Yellow
+Write-Host "Рекомендации:" -ForegroundColor Yellow
+Write-Host ""
 
-if (-not $anthropicKey) {
-    Write-Host "  → Установите ANTHROPIC_API_KEY (https://console.anthropic.com/)" -ForegroundColor Gray
-}
+Write-Host "  → Установите Desktop-приложения для AI:" -ForegroundColor Cyan
+Write-Host "    • Claude Desktop: https://claude.ai/download" -ForegroundColor Gray
+Write-Host "    • ChatGPT Desktop: https://openai.com/chatgpt/download" -ForegroundColor Gray
+Write-Host ""
 
-if (-not $openaiKey) {
-    Write-Host "  → Установите OPENAI_API_KEY (https://platform.openai.com/)" -ForegroundColor Gray
-}
+Write-Host "  → Установите расширения VS Code:" -ForegroundColor Cyan
+Write-Host "    code --install-extension anthropic.claude-code" -ForegroundColor Gray
+Write-Host "    code --install-extension github.copilot" -ForegroundColor Gray
+Write-Host ""
 
 if ($ghOk) {
     $ghStatus = gh auth status 2>&1
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "  → Авторизуйтесь в GitHub: gh auth login" -ForegroundColor Gray
+        Write-Host "  → Авторизуйтесь в GitHub: gh auth login" -ForegroundColor Cyan
     }
 }
 
 if ($firebaseOk) {
     $firebaseProjects = firebase projects:list 2>&1
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "  → Авторизуйтесь в Firebase: firebase login" -ForegroundColor Gray
+        Write-Host "  → Авторизуйтесь в Firebase: firebase login" -ForegroundColor Cyan
     }
 }
 
 if (-not (Test-Path $settingsFile)) {
-    Write-Host "  → Настройте MCP серверы в $settingsFile" -ForegroundColor Gray
+    Write-Host "  → Настройте MCP серверы в:" -ForegroundColor Cyan
+    Write-Host "    $settingsFile" -ForegroundColor Gray
 }
 
+Write-Host ""
+Write-Host "  ℹ️  Для CLI через API см. инструкцию 06-cli-tools-api.md" -ForegroundColor Gray
 Write-Host ""
 Write-Host "Нажмите любую клавишу для выхода..." -ForegroundColor Gray
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")

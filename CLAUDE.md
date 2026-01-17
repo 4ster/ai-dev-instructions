@@ -24,17 +24,16 @@
 Полная инструкция по настройке среды для AI-разработки:
 
 1. Введение (что такое AI-assisted development)
-2. Предварительные требования (Node.js, Git)
+2. Предварительные требования (winget для Windows, Node.js, Git)
 3. Установка VS Code
-4. Расширения VS Code (Claude, Codex, GitLens и др.)
-5. CLI-инструменты (Claude Code CLI, Codex CLI)
-6. Настройка API-ключей (Anthropic, OpenAI) — кратко со ссылками
-7. Внешние CLI (GitHub CLI, Firebase CLI)
-8. MCP серверы:
+4. Расширения VS Code (Claude, GitLens и др.)
+5. AI-инструменты (Claude Desktop, расширения VS Code)
+6. Внешние CLI (GitHub CLI, Firebase CLI)
+7. MCP серверы:
    - Базовые: filesystem, github, memory
    - Расширенные: fetch, puppeteer, postgres, sqlite, brave-search, telegram (только упоминание)
-9. Проверка установки (команды + чек-лист)
-10. Дополнительно (.claude/, CLAUDE.md, кастомные команды)
+8. Проверка установки (команды + чек-лист)
+9. Дополнительно (.claude/, CLAUDE.md, кастомные команды)
 
 ### 02-github-ai-agents.md — Работа с GitHub через AI-агентов
 
@@ -97,15 +96,29 @@
 5. Базовая настройка Linux (обновление, инструменты, .wslconfig)
 6. Интеграция с VS Code (расширение WSL, открытие проектов)
 7. Настройка инструментов разработки (Node.js через nvm, Python, Docker)
-8. Claude Code CLI в WSL (установка, API-ключ, MCP серверы)
-9. Работа с файлами между Windows и WSL (пути, рекомендации)
-10. Полезные команды WSL
-11. Troubleshooting (типичные ошибки)
+8. Работа с файлами между Windows и WSL (пути, рекомендации)
+9. Полезные команды WSL
+10. Troubleshooting (типичные ошибки)
+
+### 06-cli-tools-api.md — CLI-инструменты через API
+
+Инструкция для продвинутых пользователей по установке Claude Code CLI и Codex CLI:
+
+1. Введение (разница между подпиской и API-доступом)
+2. Claude Code CLI (установка, стоимость, API-ключи)
+3. Codex CLI (установка, стоимость, API-ключи)
+4. Альтернативы без API (Desktop приложения, расширения VS Code)
+5. Сравнение: CLI vs Desktop vs VS Code
+6. Безопасность API-ключей
+7. Мониторинг затрат
+8. FAQ (подписка vs API, бесплатные кредиты)
 
 ## Технические решения
 
 - **Node.js и Claude Desktop:** В Claude Desktop есть настройка "Use built-in Node.js for MCP", которая работает только для Desktop. Для Claude Code CLI Node.js обязателен.
 - **MCP серверы в первой инструкции:** Только базовые три (filesystem, github, memory), остальные — ссылки.
+- **CLI-инструменты вынесены отдельно:** Claude Code CLI и Codex CLI требуют API-доступа и оплаты отдельно от подписки, поэтому вынесены в отдельную инструкцию 06.
+- **Скрипт не устанавливает CLI:** Скрипт `windows-setup.ps1` не устанавливает Claude Code CLI и Codex CLI, рекомендует Desktop-приложения.
 
 ## Стиль написания
 

@@ -304,110 +304,51 @@ code --install-extension dbaeumer.vscode-eslint
 
 ---
 
-## Установка CLI-инструментов
+## AI-инструменты для разработки
 
-### Claude Code CLI
+Для работы с AI в разработке используйте одно из следующих решений:
 
-Claude Code — это мощный AI-агент, работающий в командной строке. Он может выполнять сложные многошаговые задачи, редактировать файлы, запускать команды.
+### Claude Desktop (рекомендуется для подписчиков)
+
+**Десктопное приложение** от Anthropic с полным функционалом Claude.
+
+- Скачать: [claude.ai/download](https://claude.ai/download)
+- Требуется: подписка Claude Pro ($20/месяц)
+- **Не требует API-ключей**
+
+### Расширения VS Code
+
+#### Claude for VS Code
+
+Официальное расширение от Anthropic.
 
 ```bash
-npm install -g @anthropic-ai/claude-code
+code --install-extension anthropic.claude-code
 ```
 
-Проверка установки:
-```bash
-claude --version
-```
+Работает с подпиской Claude Pro.
 
-### Codex CLI
+#### GitHub Copilot
 
 ```bash
-npm install -g @openai/codex
+code --install-extension github.copilot
 ```
 
-Проверка:
-```bash
-codex --version
-```
+Стоимость: $10/месяц (бесплатно для студентов и участников open-source проектов).
+
+### CLI-инструменты через API (опционально)
+
+> ⚠️ **Внимание:** Claude Code CLI и Codex CLI требуют **API-доступа** и **оплаты отдельно от подписки**.
+
+Если вам нужны CLI-инструменты для автоматизации и программного доступа, см. [Инструкцию 06: CLI-инструменты через API](06-cli-tools-api.md).
+
+**Для обычной разработки используйте десктопные приложения или расширения VS Code!**
 
 ---
 
-## Настройка API-ключей
+## Установка внешних CLI (опционально)
 
-Для работы AI-инструментов необходимы API-ключи.
-
-### Получение ключа Anthropic (для Claude)
-
-1. Перейдите на [console.anthropic.com](https://console.anthropic.com/)
-2. Зарегистрируйтесь или войдите
-3. Перейдите в раздел API Keys
-4. Создайте новый ключ и скопируйте его
-
-> **Важно:** Ключ показывается только один раз. Сохраните его в безопасном месте.
-
-Документация по биллингу: [docs.anthropic.com/claude/docs/billing](https://docs.anthropic.com/en/docs/build-with-claude/billing)
-
-### Получение ключа OpenAI (для Codex)
-
-1. Перейдите на [platform.openai.com](https://platform.openai.com/)
-2. Зарегистрируйтесь или войдите
-3. Перейдите в API Keys
-4. Создайте новый ключ
-
-### Настройка переменных окружения
-
-<details>
-<summary><strong>Windows (PowerShell)</strong></summary>
-
-Временно (только для текущей сессии):
-```powershell
-$env:ANTHROPIC_API_KEY = "sk-ant-..."
-$env:OPENAI_API_KEY = "sk-..."
-```
-
-Постоянно (через системные переменные):
-1. Нажмите `Win + R`, введите `sysdm.cpl`
-2. Вкладка "Дополнительно" → "Переменные среды"
-3. В разделе "Переменные среды пользователя" нажмите "Создать"
-4. Добавьте `ANTHROPIC_API_KEY` и `OPENAI_API_KEY`
-
-Или через PowerShell:
-```powershell
-[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "sk-ant-...", "User")
-[Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "sk-...", "User")
-```
-
-</details>
-
-<details>
-<summary><strong>macOS / Linux</strong></summary>
-
-Добавьте в `~/.bashrc`, `~/.zshrc` или `~/.profile`:
-
-```bash
-export ANTHROPIC_API_KEY="sk-ant-..."
-export OPENAI_API_KEY="sk-..."
-```
-
-Затем перезагрузите конфигурацию:
-```bash
-source ~/.bashrc  # или ~/.zshrc
-```
-
-</details>
-
-### Проверка
-
-```bash
-echo $ANTHROPIC_API_KEY  # macOS/Linux
-echo $env:ANTHROPIC_API_KEY  # Windows PowerShell
-```
-
----
-
-## Установка внешних CLI
-
-Эти инструменты позволяют AI-агентам взаимодействовать с внешними сервисами.
+Эти инструменты полезны для работы с GitHub и Firebase.
 
 ### GitHub CLI
 

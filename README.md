@@ -19,11 +19,12 @@
 
 | № | Инструкция | Описание |
 |---|------------|----------|
-| 01 | [Установка и настройка среды](01-setup-environment.md) | VS Code, CLI-инструменты, API-ключи, базовые MCP серверы |
+| 01 | [Установка и настройка среды](01-setup-environment.md) | VS Code, Desktop-приложения, расширения, базовые MCP серверы |
 | 02 | [Работа с GitHub через AI-агентов](02-github-ai-agents.md) | Git, GitHub CLI, MCP сервер GitHub, практические сценарии |
 | 03 | [Интеграция с Firebase](03-firebase-integration.md) | Firebase CLI, Firestore, Authentication, Hosting |
 | 04 | [Продвинутые MCP серверы](04-advanced-mcp.md) | fetch, puppeteer, postgres, sqlite, brave-search, telegram |
 | 05 | [Настройка WSL для Windows](05-wsl-setup.md) *(опционально)* | WSL2, интеграция с VS Code, Docker, Claude Code в Linux |
+| 06 | [CLI-инструменты через API](06-cli-tools-api.md) *(опционально)* | Claude Code CLI, Codex CLI — требуют API и оплаты отдельно |
 
 ## Быстрый старт
 

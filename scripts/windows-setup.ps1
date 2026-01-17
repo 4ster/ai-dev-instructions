@@ -216,39 +216,20 @@ if (Test-CommandExists code) {
 }
 
 # =============================================================================
-# 5. Установка CLI-инструментов через npm
+# 5. Установка Firebase CLI (опционально)
 # =============================================================================
-Write-Host "`n[5/8] Установка CLI-инструментов..." -ForegroundColor Yellow
+Write-Host "`n[5/8] Установка Firebase CLI..." -ForegroundColor Yellow
 
 if (Test-CommandExists npm) {
-    # Claude Code CLI
-    Write-Host "  → Установка Claude Code CLI..." -ForegroundColor Cyan
-    try {
-        npm install -g @anthropic-ai/claude-code 2>&1 | Out-Null
-        Write-Host "    ✓ Claude Code CLI установлен" -ForegroundColor Green
-    } catch {
-        Write-Host "    ✗ Ошибка установки Claude Code CLI" -ForegroundColor Red
-    }
-
-    # Codex CLI
-    Write-Host "  → Установка Codex CLI..." -ForegroundColor Cyan
-    try {
-        npm install -g @openai/codex 2>&1 | Out-Null
-        Write-Host "    ✓ Codex CLI установлен" -ForegroundColor Green
-    } catch {
-        Write-Host "    ✗ Ошибка установки Codex CLI" -ForegroundColor Red
-    }
-
-    # Firebase CLI
     Write-Host "  → Установка Firebase CLI..." -ForegroundColor Cyan
     try {
         npm install -g firebase-tools 2>&1 | Out-Null
-        Write-Host "    ✓ Firebase CLI установлен" -ForegroundColor Green
+        Write-Host "  ✓ Firebase CLI установлен" -ForegroundColor Green
     } catch {
-        Write-Host "    ✗ Ошибка установки Firebase CLI" -ForegroundColor Red
+        Write-Host "  ✗ Ошибка установки Firebase CLI" -ForegroundColor Red
     }
 } else {
-    Write-Host "  ✗ npm не найден. Установите Node.js и перезапустите скрипт" -ForegroundColor Red
+    Write-Host "  ⚠ npm не найден. Пропускаем установку Firebase CLI" -ForegroundColor Yellow
 }
 
 # =============================================================================
@@ -395,36 +376,44 @@ Write-Host "  Следующие шаги" -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host ""
 
-Write-Host "1. Настройте API-ключи:" -ForegroundColor Yellow
-Write-Host "   • Anthropic (Claude): https://console.anthropic.com/" -ForegroundColor Gray
-Write-Host "   • OpenAI (Codex): https://platform.openai.com/" -ForegroundColor Gray
+Write-Host "1. Установите Desktop-приложения для AI:" -ForegroundColor Yellow
+Write-Host "   • Claude Desktop: https://claude.ai/download" -ForegroundColor Gray
+Write-Host "     (Требуется подписка Claude Pro - \$20/месяц)" -ForegroundColor Gray
+Write-Host "   • ChatGPT Desktop: https://openai.com/chatgpt/download" -ForegroundColor Gray
+Write-Host "     (Требуется подписка ChatGPT Plus - \$20/месяц)" -ForegroundColor Gray
 Write-Host ""
-Write-Host "   Добавьте их в переменные окружения:" -ForegroundColor Gray
-Write-Host '   [Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "sk-ant-...", "User")' -ForegroundColor Cyan
-Write-Host '   [Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "sk-...", "User")' -ForegroundColor Cyan
+Write-Host "   ⚠️  Claude Code CLI и Codex CLI НЕ ВКЛЮЧЕНЫ в скрипт!" -ForegroundColor Yellow
+Write-Host "   Они требуют API-доступа и оплаты отдельно от подписки." -ForegroundColor Yellow
+Write-Host "   См. инструкцию 06-cli-tools-api.md для деталей." -ForegroundColor Gray
 Write-Host ""
 
-Write-Host "2. Авторизуйтесь в GitHub CLI:" -ForegroundColor Yellow
+Write-Host "2. Установите расширения VS Code:" -ForegroundColor Yellow
+Write-Host "   code --install-extension anthropic.claude-code" -ForegroundColor Cyan
+Write-Host "   code --install-extension github.copilot" -ForegroundColor Cyan
+Write-Host ""
+
+Write-Host "3. Авторизуйтесь в GitHub CLI:" -ForegroundColor Yellow
 Write-Host "   gh auth login" -ForegroundColor Cyan
 Write-Host ""
 
-Write-Host "3. Авторизуйтесь в Firebase CLI:" -ForegroundColor Yellow
+Write-Host "4. Авторизуйтесь в Firebase CLI (если нужно):" -ForegroundColor Yellow
 Write-Host "   firebase login" -ForegroundColor Cyan
 Write-Host ""
 
-Write-Host "4. Получите GitHub token для MCP:" -ForegroundColor Yellow
+Write-Host "5. Получите GitHub token для MCP (опционально):" -ForegroundColor Yellow
 Write-Host "   https://github.com/settings/tokens" -ForegroundColor Gray
 Write-Host "   Scopes: repo, read:org, read:user" -ForegroundColor Gray
 Write-Host "   Добавьте в $settingsFile" -ForegroundColor Gray
 Write-Host ""
 
-Write-Host "5. Перезапустите терминал для применения PATH" -ForegroundColor Yellow
+Write-Host "6. Перезапустите терминал для применения PATH" -ForegroundColor Yellow
 Write-Host ""
 
 Write-Host "Документация:" -ForegroundColor Yellow
-Write-Host "  → 01-setup-environment.md - Подробная инструкция" -ForegroundColor Gray
+Write-Host "  → 01-setup-environment.md - Основная инструкция" -ForegroundColor Gray
 Write-Host "  → 02-github-ai-agents.md - Работа с GitHub" -ForegroundColor Gray
 Write-Host "  → 03-firebase-integration.md - Интеграция с Firebase" -ForegroundColor Gray
+Write-Host "  → 06-cli-tools-api.md - Claude Code CLI и Codex CLI (через API)" -ForegroundColor Gray
 Write-Host ""
 
 Write-Host "Нажмите любую клавишу для выхода..." -ForegroundColor Gray
