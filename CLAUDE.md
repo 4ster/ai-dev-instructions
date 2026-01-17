@@ -45,10 +45,12 @@ ai-dev-instructions/
 Полная инструкция по настройке среды для AI-разработки:
 
 1. Введение (что такое AI-assisted development)
-2. Предварительные требования (важная информация о правах администратора, winget для Windows, Node.js, Git)
+2. Предварительные требования (права администратора, winget для Windows, Node.js, Git)
 3. Установка VS Code
-4. Расширения VS Code (Claude, GitLens и др.)
-5. AI-инструменты (Claude Desktop, расширения VS Code)
+4. Установка расширений VS Code (Claude, Codex, GitLens и др.)
+5. AI-инструменты для разработки:
+   - Desktop-приложения: Claude Desktop, ChatGPT Desktop
+   - CLI-инструменты через API (ссылка на инструкцию 06)
 6. Внешние CLI (GitHub CLI, Firebase CLI)
 7. MCP серверы:
    - Базовые: filesystem, github

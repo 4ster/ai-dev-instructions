@@ -268,9 +268,11 @@ sudo apt install code
 
 ## Установка расширений VS Code
 
-### Claude for VS Code
+### AI-расширения
 
-Официальное расширение от Anthropic для работы с Claude.
+#### Claude for VS Code
+
+Официальное расширение от Anthropic для работы с Claude прямо в редакторе.
 
 1. Откройте VS Code
 2. Перейдите в Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
@@ -282,9 +284,11 @@ sudo apt install code
 code --install-extension anthropic.claude-code
 ```
 
-### Codex (OpenAI)
+**Требования:** Подписка Claude Pro ($20/месяц)
 
-Расширение для работы с моделями OpenAI.
+#### Codex for VS Code
+
+Расширение от OpenAI для работы с моделями GPT в редакторе.
 
 1. В Extensions найдите "Codex" (издатель: OpenAI)
 2. Нажмите Install
@@ -293,6 +297,8 @@ code --install-extension anthropic.claude-code
 ```bash
 code --install-extension openai.codex
 ```
+
+**Требования:** Подписка ChatGPT Plus ($20/месяц) или OpenAI API
 
 ### Рекомендуемые дополнительные расширения
 
@@ -365,28 +371,6 @@ brew install --cask chatgpt
 ```
 
 </details>
-
-### Расширения VS Code
-
-#### Claude for VS Code
-
-Официальное расширение от Anthropic для работы с Claude прямо в редакторе.
-
-```bash
-code --install-extension anthropic.claude-code
-```
-
-Работает с подпиской Claude Pro.
-
-#### Codex for VS Code
-
-Расширение от OpenAI для работы с моделями GPT в редакторе.
-
-```bash
-code --install-extension openai.codex
-```
-
-Работает с подпиской ChatGPT Plus или OpenAI API.
 
 ### CLI-инструменты через API (опционально)
 
