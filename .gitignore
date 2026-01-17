@@ -1,0 +1,186 @@
+# =============================================================================
+# .gitignore для проекта ai-dev-instructions
+# =============================================================================
+
+# Операционные системы
+# -----------------------------------------------------------------------------
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Редакторы и IDE
+# -----------------------------------------------------------------------------
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (WebStorm, PyCharm и др.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# Node.js и npm
+# -----------------------------------------------------------------------------
+
+# Зависимости
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Переменные окружения
+.env
+.env.local
+.env.*.local
+
+# Логи
+logs/
+*.log
+
+# Временные файлы
+*.tmp
+*.temp
+.cache/
+
+# Python
+# -----------------------------------------------------------------------------
+
+# Байт-код
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Виртуальное окружение
+venv/
+env/
+ENV/
+.venv/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Конфиденциальные данные
+# -----------------------------------------------------------------------------
+
+# API ключи и токены (на случай примеров)
+**/config/secrets.json
+**/config/credentials.json
+**/.secrets/
+*.key
+*.pem
+
+# Firebase
+**/.firebase/
+**/firebase-debug.log
+**/firestore-debug.log
+**/ui-debug.log
+**/service-account*.json
+
+# GitHub tokens
+.github-token
+
+# Резервные копии и временные файлы
+# -----------------------------------------------------------------------------
+
+# Резервные копии
+*.bak
+*.backup
+*.old
+*.orig
+*.swp
+*.swo
+
+# Временные файлы редакторов
+*~
+*.autosave
+
+# Архивы
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Тестовые и экспериментальные файлы
+# -----------------------------------------------------------------------------
+
+# Тестовые директории
+test-project/
+playground/
+sandbox/
+experiments/
+
+# Черновики
+drafts/
+*.draft.md
+*.wip.md
+
+# Скомпилированные и сгенерированные файлы
+# -----------------------------------------------------------------------------
+
+# Скомпилированные файлы
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Документация (если генерируется автоматически)
+docs/_build/
+site/
+
+# Разное
+# -----------------------------------------------------------------------------
+
+# Локальные заметки пользователя
+TODO.local.md
+NOTES.local.md
+*.personal.md
+
+# Директория для локальных экспериментов
+local/
