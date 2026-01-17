@@ -24,7 +24,7 @@
 Полная инструкция по настройке среды для AI-разработки:
 
 1. Введение (что такое AI-assisted development)
-2. Предварительные требования (winget для Windows, Node.js, Git)
+2. Предварительные требования (важная информация о правах администратора, winget для Windows, Node.js, Git)
 3. Установка VS Code
 4. Расширения VS Code (Claude, GitLens и др.)
 5. AI-инструменты (Claude Desktop, расширения VS Code)
