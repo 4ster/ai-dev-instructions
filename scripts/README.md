@@ -14,7 +14,7 @@
 - **Редактор:** Visual Studio Code
 - **Расширения VS Code:** Claude, Codex, GitLens, Error Lens, Prettier, ESLint
 - **CLI-инструменты:** GitHub CLI, Firebase CLI
-- **MCP серверы:** filesystem, github, memory
+- **MCP серверы:** filesystem, github
 - **Конфигурация:** Создает базовую настройку для Claude Desktop
 
 > ⚠️ **Примечание:** Claude Code CLI и Codex CLI не включены в этот скрипт. Для их установки используйте `install-cli-tools.ps1`.

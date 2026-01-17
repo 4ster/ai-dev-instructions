@@ -180,8 +180,7 @@ if (-not $SkipCLI) {
 
             $mcpServers = @(
                 "@anthropic-ai/mcp-server-filesystem",
-                "@anthropic-ai/mcp-server-github",
-                "@anthropic-ai/mcp-server-memory"
+                "@anthropic-ai/mcp-server-github"
             )
 
             foreach ($server in $mcpServers) {
@@ -189,7 +188,7 @@ if (-not $SkipCLI) {
                     npm uninstall -g $server 2>&1 | Out-Null
                     Write-Host "    ✓ $server удален" -ForegroundColor Green
                 } catch {
-                    Write-Host "    ⚠ $server: $_" -ForegroundColor Yellow
+                    Write-Host "    ⚠ $server : ошибка удаления" -ForegroundColor Yellow
                 }
             }
         } else {

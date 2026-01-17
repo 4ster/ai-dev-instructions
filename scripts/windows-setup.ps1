@@ -294,8 +294,7 @@ Write-Host "`n[8/9] Установка базовых MCP серверов..." -
 if (Test-CommandExists npm) {
     $mcpServers = @(
         @{package="@anthropic-ai/mcp-server-filesystem"; name="Filesystem"},
-        @{package="@anthropic-ai/mcp-server-github"; name="GitHub"},
-        @{package="@anthropic-ai/mcp-server-memory"; name="Memory"}
+        @{package="@anthropic-ai/mcp-server-github"; name="GitHub"}
     )
 
     foreach ($server in $mcpServers) {
@@ -357,10 +356,6 @@ if (-not (Test-Path $settingsFile)) {
                 env = @{
                     GITHUB_TOKEN = if ($githubToken) { $githubToken } else { "YOUR_GITHUB_TOKEN" }
                 }
-            }
-            memory = @{
-                command = "npx"
-                args = @("-y", "@anthropic-ai/mcp-server-memory")
             }
         }
     }

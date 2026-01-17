@@ -715,10 +715,6 @@ npm install -g @anthropic-ai/mcp-server-sequential-thinking
         "GITHUB_TOKEN": "ghp_xxxxxxxxxxxx"
       }
     },
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-memory"]
-    },
     "fetch": {
       "command": "npx",
       "args": ["-y", "@anthropic-ai/mcp-server-fetch"]
@@ -777,10 +773,6 @@ npm install -g @anthropic-ai/mcp-server-sequential-thinking
       "env": {
         "GITHUB_TOKEN": "ghp_xxxxxxxxxxxx"
       }
-    },
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-memory"]
     },
     "fetch": {
       "command": "npx",
@@ -971,7 +963,6 @@ sudo apt install -y libgbm1 libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libx
 ### Базовые серверы
 - [ ] filesystem настроен
 - [ ] github настроен
-- [ ] memory настроен
 
 ### Продвинутые серверы (по необходимости)
 - [ ] fetch — для HTTP-запросов

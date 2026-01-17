@@ -30,7 +30,6 @@ AI-assisted development — это подход к разработке прог
 - Писать и редактировать код в ваших проектах
 - Работать с Git и GitHub (создавать коммиты, PR, issues)
 - Взаимодействовать с Firebase (база данных, хостинг, авторизация)
-- Запоминать контекст между сессиями
 - Выполнять команды в терминале
 
 ---
@@ -423,20 +422,18 @@ firebase login
 
 ### Базовые MCP серверы
 
-Мы настроим три основных сервера:
+Мы настроим два основных сервера:
 
 | Сервер | Назначение |
 |--------|------------|
 | **filesystem** | Работа с файлами вне рабочей директории |
 | **github** | Полная работа с GitHub: repos, issues, PR, actions |
-| **memory** | Персистентная память между сессиями |
 
 ### Установка MCP серверов
 
 ```bash
 npm install -g @anthropic-ai/mcp-server-filesystem
 npm install -g @anthropic-ai/mcp-server-github
-npm install -g @anthropic-ai/mcp-server-memory
 ```
 
 ### Конфигурация для Claude Code CLI
@@ -461,10 +458,6 @@ npm install -g @anthropic-ai/mcp-server-memory
       "env": {
         "GITHUB_TOKEN": "ghp_..."
       }
-    },
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-memory"]
     }
   }
 }
@@ -490,10 +483,6 @@ npm install -g @anthropic-ai/mcp-server-memory
       "env": {
         "GITHUB_TOKEN": "ghp_..."
       }
-    },
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-memory"]
     }
   }
 }

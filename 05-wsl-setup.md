@@ -443,10 +443,6 @@ nano ~/.config/claude/settings.json
       "env": {
         "GITHUB_TOKEN": "ghp_..."
       }
-    },
-    "memory": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-memory"]
     }
   }
 }

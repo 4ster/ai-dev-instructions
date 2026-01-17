@@ -30,7 +30,7 @@
 5. AI-инструменты (Claude Desktop, расширения VS Code)
 6. Внешние CLI (GitHub CLI, Firebase CLI)
 7. MCP серверы:
-   - Базовые: filesystem, github, memory
+   - Базовые: filesystem, github
    - Расширенные: fetch, puppeteer, postgres, sqlite, brave-search, telegram (только упоминание)
 8. Проверка установки (команды + чек-лист)
 9. Дополнительно (.claude/, CLAUDE.md, кастомные команды)
@@ -116,7 +116,7 @@
 ## Технические решения
 
 - **Node.js и Claude Desktop:** В Claude Desktop есть настройка "Use built-in Node.js for MCP", которая работает только для Desktop. Для Claude Code CLI Node.js обязателен.
-- **MCP серверы в первой инструкции:** Только базовые три (filesystem, github, memory), остальные — ссылки.
+- **MCP серверы в первой инструкции:** Только базовые два (filesystem, github), остальные — ссылки.
 - **CLI-инструменты вынесены отдельно:** Claude Code CLI и Codex CLI требуют API-доступа и оплаты отдельно от подписки, поэтому вынесены в отдельную инструкцию 06.
 - **Скрипт не устанавливает CLI:** Скрипт `windows-setup.ps1` не устанавливает Claude Code CLI и Codex CLI, рекомендует Desktop-приложения.
 

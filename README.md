@@ -19,7 +19,7 @@
 
 | № | Инструкция | Описание |
 |---|------------|----------|
-| 01 | [Установка и настройка среды](01-setup-environment.md) | VS Code, Desktop-приложения, расширения, базовые MCP серверы |
+| 01 | [Установка и настройка среды](01-setup-environment.md) | VS Code, Desktop-приложения, расширения, MCP серверы (filesystem, github) |
 | 02 | [Работа с GitHub через AI-агентов](02-github-ai-agents.md) | Git, GitHub CLI, MCP сервер GitHub, практические сценарии |
 | 03 | [Интеграция с Firebase](03-firebase-integration.md) | Firebase CLI, Firestore, Authentication, Hosting |
 | 04 | [Продвинутые MCP серверы](04-advanced-mcp.md) | fetch, puppeteer, postgres, sqlite, brave-search, telegram |
