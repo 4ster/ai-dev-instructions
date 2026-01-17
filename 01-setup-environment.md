@@ -37,6 +37,52 @@ AI-assisted development — это подход к разработке прог
 
 ## Предварительные требования
 
+### Windows: установка winget (опционально)
+
+> **Для пользователей Windows:** Если вы хотите устанавливать программы из командной строки (как показано в примерах с `winget`), вам понадобится **Windows Package Manager (winget)**. Это опционально — все программы можно установить вручную через скачивание установщиков.
+
+**winget** — официальный менеджер пакетов от Microsoft для Windows 10/11, который позволяет устанавливать программы одной командой из PowerShell.
+
+#### Проверка наличия winget
+
+```powershell
+winget --version
+```
+
+Если команда возвращает версию (например, `v1.6.3482`), winget уже установлен.
+
+#### Установка winget
+
+<details>
+<summary><strong>Способ 1: Через Microsoft Store (рекомендуется)</strong></summary>
+
+1. Откройте **Microsoft Store**
+2. Найдите **"App Installer"** (или "Установщик приложений")
+3. Нажмите "Обновить" или "Получить"
+4. Перезапустите PowerShell после установки
+
+</details>
+
+<details>
+<summary><strong>Способ 2: Прямая загрузка</strong></summary>
+
+Если Microsoft Store недоступен, выполните в PowerShell от имени администратора:
+
+```powershell
+$progressPreference = 'silentlyContinue'
+Write-Host "Скачивание App Installer..." -ForegroundColor Cyan
+Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
+Write-Host "Установка..." -ForegroundColor Cyan
+Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
+Write-Host "Готово! Перезапустите PowerShell" -ForegroundColor Green
+```
+
+</details>
+
+**Без winget:** Если вы не хотите устанавливать winget, просто скачивайте установщики с официальных сайтов программ (ссылки приведены в каждом разделе).
+
+---
+
 ### Node.js (v18 или выше)
 
 Node.js — это среда выполнения JavaScript. Она необходима для:

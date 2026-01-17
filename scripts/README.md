@@ -92,6 +92,48 @@
 
 ---
 
+## Требования
+
+### winget (Windows Package Manager)
+
+Скрипт `windows-setup.ps1` использует `winget` для автоматической установки программ.
+
+**Проверьте наличие winget:**
+```powershell
+winget --version
+```
+
+**Если winget не установлен:**
+
+<details>
+<summary><strong>Способ 1: Через Microsoft Store</strong></summary>
+
+1. Откройте **Microsoft Store**
+2. Найдите **"App Installer"**
+3. Нажмите "Обновить" или "Получить"
+4. Перезапустите PowerShell
+
+</details>
+
+<details>
+<summary><strong>Способ 2: Прямая загрузка</strong></summary>
+
+Выполните в PowerShell от имени администратора:
+
+```powershell
+$progressPreference = 'silentlyContinue'
+Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
+Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
+```
+
+Перезапустите PowerShell после установки.
+
+</details>
+
+**Альтернатива:** Если не хотите устанавливать winget, используйте ручную установку согласно [01-setup-environment.md](../01-setup-environment.md).
+
+---
+
 ## Часто задаваемые вопросы
 
 ### Скрипт не запускается: "не является внутренней или внешней командой"

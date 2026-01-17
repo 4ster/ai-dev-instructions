@@ -46,6 +46,71 @@ function Test-CommandExists {
 }
 
 # =============================================================================
+# Проверка наличия winget
+# =============================================================================
+Write-Host "Проверка winget (Windows Package Manager)..." -ForegroundColor Yellow
+Write-Host ""
+
+if (-not (Test-CommandExists winget)) {
+    Write-Host "ВНИМАНИЕ: winget не установлен!" -ForegroundColor Red
+    Write-Host ""
+    Write-Host "winget необходим для автоматической установки программ." -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "Выберите действие:" -ForegroundColor Cyan
+    Write-Host "  1. Установить winget сейчас (рекомендуется)" -ForegroundColor White
+    Write-Host "  2. Продолжить без winget (ручная установка)" -ForegroundColor White
+    Write-Host "  3. Выйти из скрипта" -ForegroundColor White
+    Write-Host ""
+
+    $choice = Read-Host "Ваш выбор (1/2/3)"
+
+    if ($choice -eq "1") {
+        Write-Host "`nУстановка winget..." -ForegroundColor Cyan
+        try {
+            $progressPreference = 'silentlyContinue'
+            Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
+            Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
+            Write-Host "✓ winget установлен успешно" -ForegroundColor Green
+            Write-Host "Перезапустите скрипт для продолжения установки" -ForegroundColor Yellow
+            pause
+            exit 0
+        } catch {
+            Write-Host "✗ Ошибка установки winget: $_" -ForegroundColor Red
+            Write-Host ""
+            Write-Host "Альтернативный способ:" -ForegroundColor Yellow
+            Write-Host "1. Откройте Microsoft Store" -ForegroundColor White
+            Write-Host "2. Найдите 'App Installer'" -ForegroundColor White
+            Write-Host "3. Нажмите 'Обновить' или 'Получить'" -ForegroundColor White
+            Write-Host "4. Перезапустите этот скрипт" -ForegroundColor White
+            pause
+            exit 1
+        }
+    } elseif ($choice -eq "2") {
+        Write-Host "`nПродолжаем без winget..." -ForegroundColor Yellow
+        Write-Host "Программы нужно будет установить вручную:" -ForegroundColor Yellow
+        Write-Host "  • Node.js: https://nodejs.org/" -ForegroundColor White
+        Write-Host "  • Git: https://git-scm.com/" -ForegroundColor White
+        Write-Host "  • VS Code: https://code.visualstudio.com/" -ForegroundColor White
+        Write-Host "  • GitHub CLI: https://cli.github.com/" -ForegroundColor White
+        Write-Host ""
+        Write-Host "Скрипт установит только npm-пакеты (требуется Node.js)" -ForegroundColor Yellow
+        Write-Host ""
+        $continueWithoutWinget = Read-Host "Продолжить? (y/n)"
+        if ($continueWithoutWinget -ne "y") {
+            exit 0
+        }
+    } else {
+        Write-Host "Выход из скрипта" -ForegroundColor Gray
+        exit 0
+    }
+    Write-Host ""
+} else {
+    $wingetVersion = winget --version
+    Write-Host "✓ winget установлен: $wingetVersion" -ForegroundColor Green
+    Write-Host ""
+}
+
+# =============================================================================
 # 1. Установка Node.js
 # =============================================================================
 Write-Host "[1/8] Проверка Node.js..." -ForegroundColor Yellow
