@@ -359,11 +359,6 @@ brew install --cask claude
 1. Скачайте установщик: [openai.com/chatgpt/download](https://openai.com/chatgpt/download)
 2. Запустите установщик и следуйте инструкциям
 
-**Через терминал (Windows):**
-```powershell
-winget install OpenAI.ChatGPT
-```
-
 **Через терминал (macOS):**
 ```bash
 brew install --cask chatgpt

@@ -130,18 +130,9 @@ if (Test-CommandExists winget) {
 }
 
 # ChatGPT Desktop
-Write-Host "  → Установка ChatGPT Desktop..." -ForegroundColor Cyan
-if (Test-CommandExists winget) {
-    try {
-        winget install --id OpenAI.ChatGPT --silent --accept-package-agreements --accept-source-agreements 2>&1 | Out-Null
-        Write-Host "  ✓ ChatGPT Desktop установлен" -ForegroundColor Green
-    } catch {
-        Write-Host "  ⚠ Ошибка установки ChatGPT Desktop" -ForegroundColor Yellow
-        Write-Host "    Установите вручную: https://openai.com/chatgpt/download" -ForegroundColor Gray
-    }
-} else {
-    Write-Host "  ⚠ winget не найден. Установите вручную: https://openai.com/chatgpt/download" -ForegroundColor Yellow
-}
+Write-Host "  → ChatGPT Desktop..." -ForegroundColor Cyan
+Write-Host "    ⚠ Автоматическая установка недоступна" -ForegroundColor Yellow
+Write-Host "    Установите вручную: https://openai.com/chatgpt/download" -ForegroundColor Gray
 
 # =============================================================================
 # 2. Установка Node.js
