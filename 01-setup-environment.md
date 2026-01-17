@@ -317,25 +317,81 @@ code --install-extension dbaeumer.vscode-eslint
 
 Для работы с AI в разработке используйте одно из следующих решений:
 
-### Claude Desktop (рекомендуется для подписчиков)
+### Desktop-приложения (рекомендуется)
+
+#### Claude Desktop
 
 **Десктопное приложение** от Anthropic с полным функционалом Claude.
 
-- Скачать: [claude.ai/download](https://claude.ai/download)
 - Требуется: подписка Claude Pro ($20/месяц)
 - **Не требует API-ключей**
+
+<details>
+<summary><strong>Установка</strong></summary>
+
+**Вручную:**
+1. Скачайте установщик: [claude.ai/download](https://claude.ai/download)
+2. Запустите установщик и следуйте инструкциям
+
+**Через терминал (Windows):**
+```powershell
+winget install Anthropic.Claude
+```
+
+**Через терминал (macOS):**
+```bash
+brew install --cask claude
+```
+
+</details>
+
+#### ChatGPT Desktop
+
+**Десктопное приложение** от OpenAI с полным функционалом ChatGPT.
+
+- Требуется: подписка ChatGPT Plus ($20/месяц)
+- **Не требует API-ключей**
+
+<details>
+<summary><strong>Установка</strong></summary>
+
+**Вручную:**
+1. Скачайте установщик: [openai.com/chatgpt/download](https://openai.com/chatgpt/download)
+2. Запустите установщик и следуйте инструкциям
+
+**Через терминал (Windows):**
+```powershell
+winget install OpenAI.ChatGPT
+```
+
+**Через терминал (macOS):**
+```bash
+brew install --cask chatgpt
+```
+
+</details>
 
 ### Расширения VS Code
 
 #### Claude for VS Code
 
-Официальное расширение от Anthropic.
+Официальное расширение от Anthropic для работы с Claude прямо в редакторе.
 
 ```bash
 code --install-extension anthropic.claude-code
 ```
 
 Работает с подпиской Claude Pro.
+
+#### Codex for VS Code
+
+Расширение от OpenAI для работы с моделями GPT в редакторе.
+
+```bash
+code --install-extension openai.codex
+```
+
+Работает с подпиской ChatGPT Plus или OpenAI API.
 
 #### GitHub Copilot
 
