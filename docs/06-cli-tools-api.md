@@ -66,7 +66,7 @@ claude --version
 
 ### Получение API-ключа Anthropic
 
-1. Перейдите на [console.anthropic.com](https://console.anthropic.com/)
+1. Перейдите на [platform.anthropic.com](https://platform.anthropic.com/)
 2. Зарегистрируйтесь или войдите
 3. Перейдите в раздел **API Keys**
 4. Нажмите **Create Key**
@@ -271,7 +271,7 @@ source ~/.bashrc
 ### Если ключ утёк
 
 1. **Немедленно** удалите ключ в консоли:
-   - Anthropic: [console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys)
+   - Anthropic: [platform.anthropic.com/settings/keys](https://platform.anthropic.com/settings/keys)
    - OpenAI: [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
 
 2. Создайте новый ключ
@@ -286,7 +286,7 @@ source ~/.bashrc
 
 ### Anthropic Console
 
-1. Откройте [console.anthropic.com](https://console.anthropic.com/)
+1. Откройте [platform.anthropic.com](https://platform.anthropic.com/)
 2. Перейдите в **Usage**
 3. Посмотрите статистику использования и затраты
 

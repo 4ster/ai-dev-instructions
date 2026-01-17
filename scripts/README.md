@@ -67,10 +67,10 @@
 
 #### Использование
 
-1. **Прочитайте инструкцию** [06-cli-tools-api.md](../06-cli-tools-api.md)
+1. **Прочитайте инструкцию** [docs/06-cli-tools-api.md](../docs/06-cli-tools-api.md)
 
 2. **Получите API-ключи:**
-   - Anthropic: https://console.anthropic.com/settings/keys
+   - Anthropic: https://platform.anthropic.com/settings/keys
    - OpenAI: https://platform.openai.com/api-keys
 
 3. **Запустите скрипт:**
@@ -204,7 +204,7 @@ Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
 
 </details>
 
-**Альтернатива:** Если не хотите устанавливать winget, используйте ручную установку согласно [01-setup-environment.md](../01-setup-environment.md).
+**Альтернатива:** Если не хотите устанавливать winget, используйте ручную установку согласно [docs/01-setup-environment.md](../docs/01-setup-environment.md).
 
 ---
 
@@ -329,7 +329,7 @@ npm uninstall -g @anthropic-ai/mcp-server-memory
 ```
 
 Получите ключи:
-- Anthropic: https://console.anthropic.com/
+- Anthropic: https://platform.anthropic.com/
 - OpenAI: https://platform.openai.com/
 
 ### 2. Авторизуйтесь в сервисах
@@ -391,9 +391,9 @@ notepad "$env:APPDATA\claude\settings.json"
 
 ## Дополнительные ресурсы
 
-- [01-setup-environment.md](../01-setup-environment.md) — Подробная инструкция по ручной установке
-- [02-github-ai-agents.md](../02-github-ai-agents.md) — Работа с GitHub через AI-агентов
-- [03-firebase-integration.md](../03-firebase-integration.md) — Интеграция с Firebase
+- [docs/01-setup-environment.md](../docs/01-setup-environment.md) — Подробная инструкция по ручной установке
+- [docs/02-github-ai-agents.md](../docs/02-github-ai-agents.md) — Работа с GitHub через AI-агентов
+- [docs/03-firebase-integration.md](../docs/03-firebase-integration.md) — Интеграция с Firebase
 - [04-advanced-mcp.md](../04-advanced-mcp.md) — Продвинутые MCP серверы
 - [05-wsl-setup.md](../05-wsl-setup.md) — Настройка WSL для Windows
 
@@ -410,4 +410,4 @@ notepad "$env:APPDATA\claude\settings.json"
 
 ---
 
-**Примечание**: Скрипты предназначены для Windows 10/11. Для других ОС используйте ручную установку согласно [01-setup-environment.md](../01-setup-environment.md).
+**Примечание**: Скрипты предназначены для Windows 10/11. Для других ОС используйте ручную установку согласно [docs/01-setup-environment.md](../docs/01-setup-environment.md).
