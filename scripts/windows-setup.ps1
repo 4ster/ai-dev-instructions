@@ -317,8 +317,19 @@ if (-not (Test-Path $settingsFile)) {
 
     # Спрашиваем про GitHub токен
     Write-Host "`n  → Настройка MCP серверов..." -ForegroundColor Cyan
-    Write-Host "    Для работы с GitHub через MCP нужен токен (можно добавить позже)" -ForegroundColor Gray
-    $githubToken = Read-Host "    Введите GitHub token (или оставьте пустым)"
+    Write-Host ""
+    Write-Host "    Для работы с GitHub через MCP нужен Personal Access Token" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "    Как получить токен:" -ForegroundColor Cyan
+    Write-Host "    1. Откройте https://github.com/settings/tokens" -ForegroundColor White
+    Write-Host "    2. 'Generate new token' → 'Generate new token (classic)'" -ForegroundColor White
+    Write-Host "    3. Выберите scopes: repo, read:org, read:user" -ForegroundColor White
+    Write-Host "    4. Скопируйте токен (начинается с ghp_)" -ForegroundColor White
+    Write-Host ""
+    Write-Host "    Токен можно добавить позже в файл:" -ForegroundColor Gray
+    Write-Host "    $settingsFile" -ForegroundColor Gray
+    Write-Host ""
+    $githubToken = Read-Host "    Введите GitHub token (или нажмите Enter, чтобы пропустить)"
 
     $mcpConfig = @{
         mcpServers = @{

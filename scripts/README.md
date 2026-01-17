@@ -211,16 +211,42 @@ firebase login
 
 ### 3. Настройте MCP серверы
 
-Отредактируйте файл конфигурации:
+#### Получение GitHub токена
+
+Скрипт спрашивает GitHub токен для настройки MCP сервера. Вот как его получить:
+
+1. Перейдите на https://github.com/settings/tokens
+2. Нажмите **"Generate new token"** → **"Generate new token (classic)"**
+3. Дайте имя токену: `Claude MCP Server`
+4. Выберите срок действия: `90 days` или `No expiration`
+5. Выберите разрешения (scopes):
+   - ✅ `repo` (полный доступ к репозиториям)
+   - ✅ `read:org` (чтение организации)
+   - ✅ `read:user` (чтение профиля)
+6. Нажмите **"Generate token"**
+7. **Скопируйте токен** (начинается с `ghp_`) — он показывается только один раз!
+
+#### Добавление токена
+
+Скрипт автоматически попросит ввести токен и добавит его в конфигурацию.
+
+Или вручную отредактируйте файл:
 
 ```powershell
 notepad "$env:APPDATA\claude\settings.json"
 ```
 
-Добавьте ваш GitHub token в секцию `github.env.GITHUB_TOKEN`.
+Добавьте токен в секцию `github.env.GITHUB_TOKEN`:
 
-Получите токен: https://github.com/settings/tokens
-- Scopes: `repo`, `read:org`, `read:user`
+```json
+"github": {
+  "env": {
+    "GITHUB_TOKEN": "ghp_ваш_токен_здесь"
+  }
+}
+```
+
+**Важно**: Никогда не коммитьте токен в Git!
 
 ### 4. Проверьте установку
 
