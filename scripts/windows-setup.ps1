@@ -111,9 +111,42 @@ if (-not (Test-CommandExists winget)) {
 }
 
 # =============================================================================
-# 1. Установка Node.js
+# 1. Установка Desktop-приложений для AI
 # =============================================================================
-Write-Host "[1/8] Проверка Node.js..." -ForegroundColor Yellow
+Write-Host "[1/9] Установка Desktop-приложений для AI..." -ForegroundColor Yellow
+
+# Claude Desktop
+Write-Host "  → Установка Claude Desktop..." -ForegroundColor Cyan
+if (Test-CommandExists winget) {
+    try {
+        winget install --id Anthropic.Claude --silent --accept-package-agreements --accept-source-agreements 2>&1 | Out-Null
+        Write-Host "  ✓ Claude Desktop установлен" -ForegroundColor Green
+    } catch {
+        Write-Host "  ⚠ Ошибка установки Claude Desktop" -ForegroundColor Yellow
+        Write-Host "    Установите вручную: https://claude.ai/download" -ForegroundColor Gray
+    }
+} else {
+    Write-Host "  ⚠ winget не найден. Установите вручную: https://claude.ai/download" -ForegroundColor Yellow
+}
+
+# ChatGPT Desktop
+Write-Host "  → Установка ChatGPT Desktop..." -ForegroundColor Cyan
+if (Test-CommandExists winget) {
+    try {
+        winget install --id OpenAI.ChatGPT --silent --accept-package-agreements --accept-source-agreements 2>&1 | Out-Null
+        Write-Host "  ✓ ChatGPT Desktop установлен" -ForegroundColor Green
+    } catch {
+        Write-Host "  ⚠ Ошибка установки ChatGPT Desktop" -ForegroundColor Yellow
+        Write-Host "    Установите вручную: https://openai.com/chatgpt/download" -ForegroundColor Gray
+    }
+} else {
+    Write-Host "  ⚠ winget не найден. Установите вручную: https://openai.com/chatgpt/download" -ForegroundColor Yellow
+}
+
+# =============================================================================
+# 2. Установка Node.js
+# =============================================================================
+Write-Host "`n[2/9] Проверка Node.js..." -ForegroundColor Yellow
 
 if (Test-CommandExists node) {
     $nodeVersion = node --version
@@ -133,9 +166,9 @@ if (Test-CommandExists node) {
 }
 
 # =============================================================================
-# 2. Установка Git
+# 3. Установка Git
 # =============================================================================
-Write-Host "`n[2/8] Проверка Git..." -ForegroundColor Yellow
+Write-Host "`n[3/9] Проверка Git..." -ForegroundColor Yellow
 
 if (Test-CommandExists git) {
     $gitVersion = git --version
@@ -166,9 +199,9 @@ if (-not $gitUserName) {
 }
 
 # =============================================================================
-# 3. Установка VS Code
+# 4. Установка VS Code
 # =============================================================================
-Write-Host "`n[3/8] Проверка VS Code..." -ForegroundColor Yellow
+Write-Host "`n[4/9] Проверка VS Code..." -ForegroundColor Yellow
 
 if (Test-CommandExists code) {
     $codeVersion = code --version | Select-Object -First 1
@@ -188,9 +221,9 @@ if (Test-CommandExists code) {
 }
 
 # =============================================================================
-# 4. Установка расширений VS Code
+# 5. Установка расширений VS Code
 # =============================================================================
-Write-Host "`n[4/8] Установка расширений VS Code..." -ForegroundColor Yellow
+Write-Host "`n[5/9] Установка расширений VS Code..." -ForegroundColor Yellow
 
 if (Test-CommandExists code) {
     $extensions = @(
@@ -216,9 +249,9 @@ if (Test-CommandExists code) {
 }
 
 # =============================================================================
-# 5. Установка Firebase CLI (опционально)
+# 6. Установка Firebase CLI (опционально)
 # =============================================================================
-Write-Host "`n[5/8] Установка Firebase CLI..." -ForegroundColor Yellow
+Write-Host "`n[6/9] Установка Firebase CLI..." -ForegroundColor Yellow
 
 if (Test-CommandExists npm) {
     Write-Host "  → Установка Firebase CLI..." -ForegroundColor Cyan
@@ -233,9 +266,9 @@ if (Test-CommandExists npm) {
 }
 
 # =============================================================================
-# 6. Установка GitHub CLI
+# 7. Установка GitHub CLI
 # =============================================================================
-Write-Host "`n[6/8] Проверка GitHub CLI..." -ForegroundColor Yellow
+Write-Host "`n[7/9] Проверка GitHub CLI..." -ForegroundColor Yellow
 
 if (Test-CommandExists gh) {
     $ghVersion = gh --version | Select-Object -First 1
@@ -254,9 +287,9 @@ if (Test-CommandExists gh) {
 }
 
 # =============================================================================
-# 7. Установка базовых MCP серверов
+# 8. Установка базовых MCP серверов
 # =============================================================================
-Write-Host "`n[7/8] Установка базовых MCP серверов..." -ForegroundColor Yellow
+Write-Host "`n[8/9] Установка базовых MCP серверов..." -ForegroundColor Yellow
 
 if (Test-CommandExists npm) {
     $mcpServers = @(
@@ -279,9 +312,9 @@ if (Test-CommandExists npm) {
 }
 
 # =============================================================================
-# 8. Создание конфигурации MCP для Claude Code CLI
+# 9. Создание конфигурации MCP для Claude Desktop
 # =============================================================================
-Write-Host "`n[8/8] Настройка конфигурации Claude Code..." -ForegroundColor Yellow
+Write-Host "`n[9/9] Настройка конфигурации Claude Desktop..." -ForegroundColor Yellow
 
 $claudeConfigPath = "$env:APPDATA\claude"
 $settingsFile = "$claudeConfigPath\settings.json"
@@ -376,14 +409,14 @@ Write-Host "  Следующие шаги" -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host ""
 
-Write-Host "1. Установите Desktop-приложения для AI:" -ForegroundColor Yellow
-Write-Host "   • Claude Desktop: https://claude.ai/download" -ForegroundColor Gray
-Write-Host "     (Требуется подписка Claude Pro - \$20/месяц)" -ForegroundColor Gray
-Write-Host "   • ChatGPT Desktop: https://openai.com/chatgpt/download" -ForegroundColor Gray
-Write-Host "     (Требуется подписка ChatGPT Plus - \$20/месяц)" -ForegroundColor Gray
+Write-Host "1. Desktop-приложения установлены:" -ForegroundColor Yellow
+Write-Host "   • Claude Desktop (требуется подписка Claude Pro - \$20/месяц)" -ForegroundColor Gray
+Write-Host "   • ChatGPT Desktop (требуется подписка ChatGPT Plus - \$20/месяц)" -ForegroundColor Gray
 Write-Host ""
-Write-Host "   ⚠️  Claude Code CLI и Codex CLI НЕ ВКЛЮЧЕНЫ в скрипт!" -ForegroundColor Yellow
-Write-Host "   Они требуют API-доступа и оплаты отдельно от подписки." -ForegroundColor Yellow
+Write-Host "   ℹ️  Claude Code CLI и Codex CLI:" -ForegroundColor Cyan
+Write-Host "   Для установки CLI-инструментов используйте:" -ForegroundColor Gray
+Write-Host "   .\install-cli-tools.ps1" -ForegroundColor White
+Write-Host "   (требуют API-доступа и оплаты отдельно от подписки)" -ForegroundColor Gray
 Write-Host "   См. инструкцию 06-cli-tools-api.md для деталей." -ForegroundColor Gray
 Write-Host ""
 
