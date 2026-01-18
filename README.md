@@ -24,7 +24,8 @@
 | 03 | [Интеграция с Firebase](docs/03-firebase-integration.md) | Firebase CLI, Firestore, Authentication, Hosting |
 | 04 | [Продвинутые MCP серверы](docs/04-advanced-mcp.md) | fetch, puppeteer, postgres, sqlite, brave-search, telegram |
 | 05 | [Настройка WSL для Windows](docs/05-wsl-setup.md) *(опционально)* | WSL2, интеграция с VS Code, Docker, Claude Code в Linux |
-| 06 | [CLI-инструменты через API](docs/06-cli-tools-api.md) *(опционально)* | Claude Code CLI, Codex CLI — требуют API и оплаты отдельно |
+| 06 | [CLI-инструменты через API](docs/06-cli-tools-api.md) *(опционально)* | Codex CLI — требует API и оплаты отдельно |
+| 07 | [Agent Skills в VS Code](docs/07_skills-in-vscode.md) | Проектно-специфичные навыки для AI-агентов в VS Code 1.108+ |
 
 ## Быстрый старт
 
