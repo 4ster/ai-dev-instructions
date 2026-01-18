@@ -17,7 +17,7 @@
 - **MCP серверы:** filesystem, github
 - **Конфигурация:** Создает базовую настройку для Claude Desktop
 
-> ⚠️ **Примечание:** Claude Code CLI и Codex CLI не включены в этот скрипт. Для их установки используйте `install-cli-tools.ps1`.
+> ⚠️ **Примечание:** Codex CLI не включён в этот скрипт. Для его установки используйте `install-cli-tools.ps1`.
 
 #### Использование
 
@@ -56,21 +56,19 @@
 
 ### 🔧 install-cli-tools.ps1
 
-**Установка Claude Code CLI и Codex CLI**
+**Установка Codex CLI**
 
-> ⚠️ **ВАЖНО:** Эти инструменты требуют API-доступа и оплаты отдельно от подписки!
+> ⚠️ **ВАЖНО:** Этот инструмент требует API-доступа и оплаты отдельно от подписки!
 
 Устанавливает:
-- Claude Code CLI (требует Anthropic API key)
 - Codex CLI (требует OpenAI API key)
-- Настраивает переменные окружения для API-ключей
+- Настраивает переменные окружения для API-ключа
 
 #### Использование
 
 1. **Прочитайте инструкцию** [docs/06-cli-tools-api.md](../docs/06-cli-tools-api.md)
 
-2. **Получите API-ключи:**
-   - Anthropic: https://platform.claude.com/settings/keys
+2. **Получите API-ключ:**
    - OpenAI: https://platform.openai.com/api-keys
 
 3. **Запустите скрипт:**
@@ -121,7 +119,7 @@
 #### Что удаляет
 
 - Desktop-приложения (Claude Desktop, ChatGPT Desktop)
-- CLI-инструменты (Claude Code CLI, Codex CLI, Firebase CLI, GitHub CLI)
+- CLI-инструменты (Codex CLI, Firebase CLI, GitHub CLI)
 - MCP серверы
 - Расширения VS Code
 - VS Code (опционально)
@@ -259,9 +257,9 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 - Не требует API-ключей
 
 **install-cli-tools.ps1:**
-- Устанавливает CLI-инструменты (Claude Code CLI, Codex CLI)
+- Устанавливает CLI-инструменты (Codex CLI)
 - Требует API-доступа и pay-as-you-go оплаты
-- Требует API-ключи от Anthropic и OpenAI
+- Требует API-ключ от OpenAI
 
 ### Как полностью удалить всё установленное?
 
@@ -306,7 +304,6 @@ winget uninstall Microsoft.VisualStudioCode
 winget uninstall GitHub.cli
 
 # Удаление npm пакетов
-npm uninstall -g @anthropic-ai/claude-code
 npm uninstall -g @openai/codex
 npm uninstall -g firebase-tools
 npm uninstall -g @anthropic-ai/mcp-server-filesystem
@@ -321,15 +318,11 @@ npm uninstall -g @anthropic-ai/mcp-server-memory
 ### 1. Настройте API ключи
 
 ```powershell
-# Anthropic (Claude)
-[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "sk-ant-...", "User")
-
 # OpenAI (Codex)
 [Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "sk-...", "User")
 ```
 
-Получите ключи:
-- Anthropic: https://platform.claude.com/
+Получите ключ:
 - OpenAI: https://platform.openai.com/
 
 ### 2. Авторизуйтесь в сервисах

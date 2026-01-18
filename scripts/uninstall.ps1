@@ -135,19 +135,6 @@ if (-not $SkipCLI) {
     Write-Host ""
 
     if (Test-CommandExists npm) {
-        # Claude Code CLI
-        if ((Test-CommandExists claude) -and (Confirm-Action "  Удалить Claude Code CLI?" -skipIfForce)) {
-            Write-Host "  → Удаление Claude Code CLI..." -ForegroundColor Cyan
-            try {
-                npm uninstall -g @anthropic-ai/claude-code 2>&1 | Out-Null
-                Write-Host "    ✓ Claude Code CLI удален" -ForegroundColor Green
-            } catch {
-                Write-Host "    ⚠ Ошибка удаления: $_" -ForegroundColor Yellow
-            }
-        } else {
-            Write-Host "    ⊖ Claude Code CLI не установлен или пропущен" -ForegroundColor Gray
-        }
-
         # Codex CLI
         if ((Test-CommandExists codex) -and (Confirm-Action "  Удалить Codex CLI?" -skipIfForce)) {
             Write-Host "  → Удаление Codex CLI..." -ForegroundColor Cyan
@@ -354,27 +341,12 @@ if (-not $SkipConfig) {
         Write-Host "    ⊖ Конфигурация Claude Desktop не найдена или пропущена" -ForegroundColor Gray
     }
 
-    # Claude Code config (settings.json)
-    $claudeCodeConfig = "$env:APPDATA\claude\settings.json"
-    if ((Test-Path $claudeCodeConfig) -and (Confirm-Action "  Удалить конфигурацию Claude Code?" -skipIfForce)) {
-        Write-Host "  → Удаление $claudeCodeConfig..." -ForegroundColor Cyan
-        try {
-            Remove-Item $claudeCodeConfig -Force
-            Write-Host "    ✓ Конфигурация Claude Code удалена" -ForegroundColor Green
-        } catch {
-            Write-Host "    ⚠ Ошибка удаления: $_" -ForegroundColor Yellow
-        }
-    } else {
-        Write-Host "    ⊖ Конфигурация Claude Code не найдена или пропущена" -ForegroundColor Gray
-    }
-
     # Удаление переменных окружения с API-ключами
     if (Confirm-Action "  Удалить API-ключи из переменных окружения?" -skipIfForce) {
         Write-Host "  → Удаление переменных окружения..." -ForegroundColor Cyan
         try {
-            [Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", $null, "User")
             [Environment]::SetEnvironmentVariable("OPENAI_API_KEY", $null, "User")
-            Write-Host "    ✓ API-ключи удалены" -ForegroundColor Green
+            Write-Host "    ✓ API-ключ удален" -ForegroundColor Green
         } catch {
             Write-Host "    ⚠ Ошибка удаления: $_" -ForegroundColor Yellow
         }

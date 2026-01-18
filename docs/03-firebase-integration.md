@@ -37,14 +37,12 @@ AI-агенты могут значительно ускорить работу 
 Перед началом убедитесь, что у вас установлены:
 
 - [x] Node.js v18+ ([Инструкция 01](./01-setup-environment.md#nodejs-v18-или-выше))
-- [x] Claude Code CLI ([Инструкция 01](./01-setup-environment.md#claude-code-cli))
 - [x] Google-аккаунт (для Firebase Console)
 
 ### Проверка
 
 ```bash
 node --version   # v18.0.0 или выше
-claude --version # должен быть установлен
 ```
 
 ---
