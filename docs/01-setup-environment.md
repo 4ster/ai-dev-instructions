@@ -34,6 +34,7 @@ AI-assisted development — это подход к разработке прог
 
 ---
 
+
 ## Предварительные требования
 
 > **⚠️ Важно: Права администратора**
@@ -45,7 +46,7 @@ AI-assisted development — это подход к разработке прог
 > **Для Windows:** Запускайте PowerShell от имени администратора только для установки программ и глобальных npm пакетов. Все остальные команды выполняйте в обычном терминале.
 
 ---
-
+## Windows
 ### Windows: установка winget (опционально)
 
 > **Для пользователей Windows:** Если вы хотите устанавливать программы из командной строки (как показано в примерах с `winget`), вам понадобится **Windows Package Manager (winget)**. Это опционально — все программы можно установить вручную через скачивание установщиков.
@@ -88,171 +89,181 @@ Write-Host "Готово! Перезапустите PowerShell" -ForegroundColo
 
 </details>
 
-**Без winget:** Если вы не хотите устанавливать winget, просто скачивайте установщики с официальных сайтов программ (ссылки приведены в каждом разделе).
+**Без winget:** Если вы не хотите устанавливать winget, просто скачивайте установщики с официальных сайтов программ.
 
----
 
-### Node.js (v18 или выше)
+<details>
+<summary><strong>Установка остальных инструментов Windows</strong></summary>
 
-Node.js — это среда выполнения JavaScript. Она необходима для:
-- Установки Claude Code CLI и Codex CLI (они распространяются через npm)
-- Запуска MCP серверов
-
-> **Примечание:** Если вы планируете использовать только Claude Desktop (не CLI), Node.js можно не устанавливать — в Claude Desktop есть встроенный Node.js для MCP серверов. Однако для полноценной работы с CLI-инструментами установка обязательна.
-
-#### Проверка установки
-
-Откройте терминал и выполните:
-
-```bash
+```powershell
+# Node.js и npm
 node --version
 npm --version
-```
-
-Если команды возвращают версии (например, `v20.10.0` и `10.2.3`), Node.js уже установлен.
-
-#### Установка Node.js
-
-<details>
-<summary><strong>Windows</strong></summary>
-
-1. Перейдите на [nodejs.org](https://nodejs.org/)
-2. Скачайте LTS-версию (рекомендуется)
-3. Запустите установщик и следуйте инструкциям
-4. Перезапустите терминал после установки
-
-Альтернативно через winget:
-```powershell
 winget install OpenJS.NodeJS.LTS
-```
 
-</details>
-
-<details>
-<summary><strong>macOS</strong></summary>
-
-Через Homebrew (рекомендуется):
-```bash
-brew install node@20
-```
-
-Или скачайте установщик с [nodejs.org](https://nodejs.org/)
-
-</details>
-
-<details>
-<summary><strong>Linux (Ubuntu/Debian)</strong></summary>
-
-```bash
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-</details>
-
-### Git
-
-Git — система контроля версий. Необходима для работы с репозиториями.
-
-#### Проверка установки
-
-```bash
+# Git
 git --version
-```
-
-#### Установка Git
-
-<details>
-<summary><strong>Windows</strong></summary>
-
-1. Скачайте установщик с [git-scm.com](https://git-scm.com/download/win)
-2. Запустите и следуйте инструкциям (рекомендуемые настройки по умолчанию подходят)
-
-Или через winget:
-```powershell
 winget install Git.Git
-```
-
-</details>
-
-<details>
-<summary><strong>macOS</strong></summary>
-
-Git обычно предустановлен. Если нет:
-```bash
-brew install git
-```
-
-</details>
-
-<details>
-<summary><strong>Linux (Ubuntu/Debian)</strong></summary>
-
-```bash
-sudo apt-get update
-sudo apt-get install git
-```
-
-</details>
-
-#### Базовая настройка Git
-
-После установки настройте имя и email:
-
-```bash
 git config --global user.name "Ваше Имя"
 git config --global user.email "your.email@example.com"
+
+# Visual Studio Code
+code --version
+winget install Microsoft.VisualStudioCode
+
+# Устанавливаем расширения Claude и Codex в vscode
+code --install-extension anthropic.claude-code
+code --install-extension openai.codex
+
+# Claude Desktop and terminal
+claude --version
+winget install Anthropic.Claude
+
+# Codex Desktop and terminal
+codex --version
+#brew install --cask chatgpt
+npm i -g @openai/codex
+
+# Github CLI
+gh --version
+gh auth status
+winget install GitHub.cli
+gh auth login
+
+# Firebase CLI
+firebase --version
+firebase projects:list
+npm i -g firebase-tools
+firebase login
+
+# MCP Servers
+npm i -g @anthropic-ai/mcp-server-filesystem
+npm i -g @anthropic-ai/mcp-server-github
+
 ```
+
+</details>
 
 ---
 
-## Установка VS Code
-
-Visual Studio Code — бесплатный редактор кода от Microsoft. Он станет основной средой для разработки с AI.
-
-### Загрузка и установка
-
+## Установка на Mac
 <details>
-<summary><strong>Windows</strong></summary>
+<summary><strong>Установка на Mac в командной строке</strong></summary>
 
-1. Перейдите на [code.visualstudio.com](https://code.visualstudio.com/)
-2. Скачайте установщик для Windows
-3. Запустите и установите, отметив опции:
-   - ✅ Add "Open with Code" action to Windows Explorer file context menu
-   - ✅ Add "Open with Code" action to Windows Explorer directory context menu
-   - ✅ Add to PATH
-
-Или через winget:
-```powershell
-winget install Microsoft.VisualStudioCode
-```
-
-</details>
-
-<details>
-<summary><strong>macOS</strong></summary>
-
-Через Homebrew:
 ```bash
+# Node.js и npm
+node --version
+npm --version
+brew install node@24
+echo 'export PATH="/opt/homebrew/opt/node@24/bin:$PATH"' >> ~/.zshrc
+
+# Git
+git --version
+brew install git
+git config --global user.name "Ваше Имя"
+git config --global user.email "your.email@example.com"
+
+# Visual Studio Code
+code --version
+# Если vscode установлен, но команда code не работает, то, можно создать символическую ссылку
+sudo ln -s "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" /opt/homebrew/bin/code
+
+# Если vscode не установлен - ставим и создаем символическую ссылку
 brew install --cask visual-studio-code
-```
+sudo ln -s "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" /opt/homebrew/bin/code
 
-Или скачайте с [code.visualstudio.com](https://code.visualstudio.com/)
+# Устанавливаем расширения Claude и Codex в vscode
+code --install-extension anthropic.claude-code
+code --install-extension openai.codex
+
+# Claude Desktop and terminal
+claude --version
+brew install --cask claude
+
+# Codex Desktop and terminal
+codex --version
+brew install --cask chatgpt
+npm i -g @openai/codex
+
+
+# Github CLI
+gh --version
+gh auth status
+brew install gh
+gh auth login
+
+# Firebase CLI
+firebase --version
+firebase projects:list
+npm i -g firebase-tools
+firebase login
+
+# MCP Servers
+npm i -g @anthropic-ai/mcp-server-filesystem
+npm i -g @anthropic-ai/mcp-server-github
+```
 
 </details>
 
+## Установка на Linux
 <details>
-<summary><strong>Linux (Ubuntu/Debian)</strong></summary>
+<summary><strong>Установка на Linux (Ubuntu/Debian) в коммандной строке</strong></summary>
+
 
 ```bash
+# Обновляем пакеты
+sudo apt update
+
+# Node.js и npm
+node --version
+npm --version
+curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Git
+git --version
+sudo apt install git
+git config --global user.name "Ваше Имя"
+git config --global user.email "your.email@example.com"
+
+# Visual Studio Code
+code --version
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt update
 sudo apt install code
+
+# Устанавливаем расширения Claude и Codex в vscode
+code --install-extension anthropic.claude-code
+code --install-extension openai.codex
+
+# Codex Desktop and terminal
+codex --version
+npm i -g @openai/codex
+
+# Github CLI
+gh --version
+gh auth status
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+sudo apt update
+sudo apt install gh
+gh auth login
+
+# Firebase CLI
+firebase --version
+firebase projects:list
+npm i -g firebase-tools
+firebase login
+
+# MCP Servers
+npm i -g @anthropic-ai/mcp-server-filesystem
+npm i -g @anthropic-ai/mcp-server-github
 ```
 
 </details>
+
 
 ### Базовая настройка VS Code
 
@@ -279,24 +290,7 @@ sudo apt install code
 3. Найдите "Claude" (издатель: Anthropic)
 4. Нажмите Install
 
-Или установите через командную строку:
-```bash
-code --install-extension anthropic.claude-code
-```
-
-**Требования:** Подписка Claude Pro ($20/месяц)
-
 #### Codex for VS Code
-
-Расширение от OpenAI для работы с моделями GPT в редакторе.
-
-1. В Extensions найдите "Codex" (издатель: OpenAI)
-2. Нажмите Install
-
-Или:
-```bash
-code --install-extension openai.codex
-```
 
 **Требования:** Подписка ChatGPT Plus ($20/месяц) или OpenAI API
 
@@ -316,133 +310,6 @@ code --install-extension usernamehw.errorlens
 code --install-extension esbenp.prettier-vscode
 code --install-extension dbaeumer.vscode-eslint
 ```
-
----
-
-## AI-инструменты для разработки
-
-Для работы с AI в разработке используйте одно из следующих решений:
-
-### Desktop-приложения (рекомендуется)
-
-#### Claude Desktop
-
-**Десктопное приложение** от Anthropic с полным функционалом Claude.
-
-- Требуется: подписка Claude Pro ($20/месяц)
-- **Не требует API-ключей**
-
-<details>
-<summary><strong>Установка</strong></summary>
-
-**Вручную:**
-1. Скачайте установщик: [claude.ai/download](https://claude.ai/download)
-2. Запустите установщик и следуйте инструкциям
-
-**Через терминал (Windows):**
-```powershell
-winget install Anthropic.Claude
-```
-
-**Через терминал (macOS):**
-```bash
-brew install --cask claude
-```
-
-</details>
-
-#### ChatGPT Desktop
-
-**Десктопное приложение** от OpenAI с полным функционалом ChatGPT.
-
-- Требуется: подписка ChatGPT Plus ($20/месяц)
-- **Не требует API-ключей**
-
-<details>
-<summary><strong>Установка</strong></summary>
-
-**Вручную:**
-1. Скачайте установщик: [openai.com/chatgpt/download](https://openai.com/chatgpt/download)
-2. Запустите установщик и следуйте инструкциям
-
-**Через терминал (macOS):**
-```bash
-brew install --cask chatgpt
-```
-
-</details>
-
-### CLI-инструменты через API (опционально)
-
-> ⚠️ **Внимание:** Claude Code CLI и Codex CLI требуют **API-доступа** и **оплаты отдельно от подписки**.
-
-Если вам нужны CLI-инструменты для автоматизации и программного доступа, см. [Инструкцию 06: CLI-инструменты через API](06-cli-tools-api.md).
-
-**Для обычной разработки используйте десктопные приложения или расширения VS Code!**
-
----
-
-## Установка внешних CLI (опционально)
-
-Эти инструменты полезны для работы с GitHub и Firebase.
-
-### GitHub CLI
-
-GitHub CLI (`gh`) — официальный инструмент для работы с GitHub из командной строки.
-
-<details>
-<summary><strong>Windows</strong></summary>
-
-```powershell
-winget install GitHub.cli
-```
-
-</details>
-
-<details>
-<summary><strong>macOS</strong></summary>
-
-```bash
-brew install gh
-```
-
-</details>
-
-<details>
-<summary><strong>Linux (Ubuntu/Debian)</strong></summary>
-
-```bash
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-sudo apt update
-sudo apt install gh
-```
-
-</details>
-
-#### Авторизация в GitHub
-
-```bash
-gh auth login
-```
-
-Следуйте интерактивным инструкциям. Рекомендуется авторизация через браузер.
-
-### Firebase CLI
-
-Firebase CLI позволяет управлять проектами Firebase.
-
-```bash
-npm install -g firebase-tools
-```
-
-#### Авторизация в Firebase
-
-```bash
-firebase login
-```
-
-Откроется браузер для авторизации через Google-аккаунт.
 
 ---
 
