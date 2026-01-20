@@ -34,8 +34,10 @@ AI-assisted development — это подход к разработке прог
 
 ---
 
+## Установка на Windows, macOS, Linux
 
-## Предварительные требования
+<details>
+<summary><strong>Установка на Windows</strong></summary>
 
 > **⚠️ Важно: Права администратора**
 >
@@ -45,22 +47,8 @@ AI-assisted development — это подход к разработке прог
 >
 > **Для Windows:** Запускайте PowerShell от имени администратора только для установки программ и глобальных npm пакетов. Все остальные команды выполняйте в обычном терминале.
 
----
-## Windows
-### Windows: установка winget (опционально)
-
-> **Для пользователей Windows:** Если вы хотите устанавливать программы из командной строки (как показано в примерах с `winget`), вам понадобится **Windows Package Manager (winget)**. Это опционально — все программы можно установить вручную через скачивание установщиков.
 
 **winget** — официальный менеджер пакетов от Microsoft для Windows 10/11, который позволяет устанавливать программы одной командой из PowerShell.
-
-#### Проверка наличия winget
-
-```powershell
-winget --version
-```
-
-Если команда возвращает версию (например, `v1.6.3482`), winget уже установлен.
-
 #### Установка winget
 
 <details>
@@ -79,21 +67,21 @@ winget --version
 Если Microsoft Store недоступен, выполните в PowerShell от имени администратора:
 
 ```powershell
+
 $progressPreference = 'silentlyContinue'
 Write-Host "Скачивание App Installer..." -ForegroundColor Cyan
 Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
 Write-Host "Установка..." -ForegroundColor Cyan
 Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
 Write-Host "Готово! Перезапустите PowerShell" -ForegroundColor Green
+
 ```
 
 </details>
 
 **Без winget:** Если вы не хотите устанавливать winget, просто скачивайте установщики с официальных сайтов программ.
 
-
-<details>
-<summary><strong>Установка остальных инструментов Windows</strong></summary>
+### Установка остальных инструментов для AI
 
 ```powershell
 # Node.js и npm
@@ -141,12 +129,8 @@ npm i -g @anthropic-ai/mcp-server-filesystem
 npm i -g @anthropic-ai/mcp-server-github
 
 ```
-
 </details>
 
----
-
-## Установка на Mac
 <details>
 <summary><strong>Установка на Mac в командной строке</strong></summary>
 
@@ -205,9 +189,8 @@ npm i -g @anthropic-ai/mcp-server-github
 
 </details>
 
-## Установка на Linux
 <details>
-<summary><strong>Установка на Linux (Ubuntu/Debian) в коммандной строке</strong></summary>
+<summary><strong>Установка на Linux (Ubuntu/Debian) в командной строке</strong></summary>
 
 
 ```bash
@@ -264,7 +247,7 @@ npm i -g @anthropic-ai/mcp-server-github
 
 </details>
 
-
+---
 ### Базовая настройка VS Code
 
 Откройте VS Code и настройте базовые параметры через `File → Preferences → Settings` (или `Cmd+,` на macOS):
@@ -277,55 +260,27 @@ npm i -g @anthropic-ai/mcp-server-github
 
 ---
 
-## Установка расширений VS Code
-
-### AI-расширения
-
-#### Claude for VS Code
-
-Официальное расширение от Anthropic для работы с Claude прямо в редакторе.
-
-1. Откройте VS Code
-2. Перейдите в Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
-3. Найдите "Claude" (издатель: Anthropic)
-4. Нажмите Install
-
-#### Codex for VS Code
-
-**Требования:** Подписка ChatGPT Plus ($20/месяц) или OpenAI API
-
-### Рекомендуемые дополнительные расширения
-
-| Расширение | Назначение |
-|------------|------------|
-| **GitLens** | Расширенная работа с Git: blame, history, сравнение |
-| **Error Lens** | Показывает ошибки прямо в коде |
-| **Prettier** | Форматирование кода |
-| **ESLint** | Линтер для JavaScript/TypeScript |
-
-Установка одной командой:
-```bash
-code --install-extension eamodio.gitlens
-code --install-extension usernamehw.errorlens
-code --install-extension esbenp.prettier-vscode
-code --install-extension dbaeumer.vscode-eslint
-```
+### Расширения VS Code
+- **Claude for VS Code**
+    - Издатель: Anthropic
+    - Работает с подпиской Claude Pro
+    - Установка: `code --install-extension anthropic.claude-code`
+- **Codex для VS Code**
+    - Издатель: OpenAI
+    - Работает с подпиской ChatGPT Plus или OpenAI API
+    - Установка: `code --install-extension openai.codex`
 
 ---
 
 ## Настройка MCP серверов
 
-### Что такое MCP
-
 **MCP (Model Context Protocol)** — это протокол, позволяющий AI-моделям взаимодействовать с внешними инструментами и сервисами. MCP серверы — это "мосты", которые дают AI-агентам возможности:
-
 - Читать и записывать файлы
 - Делать HTTP-запросы
 - Работать с базами данных
 - Взаимодействовать с API (GitHub, Firebase, Telegram и др.)
 
 ### Базовые MCP серверы
-
 Мы настроим два основных сервера:
 
 | Сервер | Назначение |
@@ -344,10 +299,7 @@ npm install -g @anthropic-ai/mcp-server-github
 
 Создайте или отредактируйте файл конфигурации:
 
-<details>
-<summary><strong>Windows</strong></summary>
-
-Путь: `%APPDATA%\claude\settings.json`
+Путь: `%APPDATA%\claude\settings.json` (Windows) или `~/.config/claude/settings.json` (macOS / Linux)
 
 ```json
 {
@@ -367,37 +319,12 @@ npm install -g @anthropic-ai/mcp-server-github
 }
 ```
 
-</details>
-
-<details>
-<summary><strong>macOS / Linux</strong></summary>
-
-Путь: `~/.config/claude/settings.json`
-
-```json
-{
-  "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-filesystem", "/home/username/projects"]
-    },
-    "github": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-github"],
-      "env": {
-        "GITHUB_TOKEN": "ghp_..."
-      }
-    }
-  }
-}
-```
-
-</details>
-
 ### Получение GitHub Token для MCP
 
 GitHub токен необходим для работы MCP сервера GitHub. Он позволяет AI-агенту взаимодействовать с вашими репозиториями, issues и pull requests.
 
+<details>
+<summary><strong>Получение GitHub Token</strong></summary>
 #### Пошаговая инструкция
 
 1. **Откройте настройки токенов GitHub**:
@@ -458,24 +385,13 @@ GitHub токен необходим для работы MCP сервера GitH
 1. Немедленно удалите его на [github.com/settings/tokens](https://github.com/settings/tokens)
 2. Создайте новый токен
 3. Обновите конфигурацию
+</details>
 
 ### Конфигурация для Claude Desktop
 
-Если вы используете Claude Desktop, конфигурация находится в другом месте:
-
-<details>
-<summary><strong>Windows</strong></summary>
-
-Путь: `%APPDATA%\Claude\claude_desktop_config.json`
-
-</details>
-
-<details>
-<summary><strong>macOS</strong></summary>
-
-Путь: `~/Library/Application Support/Claude/claude_desktop_config.json`
-
-</details>
+Если вы используете Claude Desktop, конфигурация находится в другом месте: 
+ - `%APPDATA%\Claude\claude_desktop_config.json` (Windows)
+ -  `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
 
 Формат файла аналогичен примерам выше.
 
@@ -573,7 +489,7 @@ Claude Code поддерживает проектные настройки че�
 your-project/
 ├── .claude/
 │   ├── CLAUDE.md          # Инструкции для агента
-│   ├── settings.json      # Настройки проекта
+│   ├── settings.local.json      # Настройки проекта
 │   └── commands/          # Кастомные команды
 │       └── review.md
 ├── src/
@@ -582,8 +498,7 @@ your-project/
 
 #### CLAUDE.md — инструкции для агента(с примером)
 
-Создайте файл `.claude/CLAUDE.md` в корне проекта:
-
+Создайте файл `.claude/CLAUDE.md` в корне проекта. Вот пример инструкций, которые туда можно поместить:
 ```markdown
 # Инструкции для Claude
 
@@ -629,20 +544,7 @@ Claude будет автоматически читать этот файл пр
 ### Глобальные инструкции
 
 Для настроек, применяемых ко всем проектам, создайте файл:
-
-<details>
-<summary><strong>Windows</strong></summary>
-
-`%USERPROFILE%\.claude\CLAUDE.md`
-
-</details>
-
-<details>
-<summary><strong>macOS / Linux</strong></summary>
-
-`~/.claude/CLAUDE.md`
-
-</details>
+`%USERPROFILE%\.claude\CLAUDE.md` (Windows) или `~/.claude/CLAUDE.md` (macOS / Linux)
 
 ---
 
