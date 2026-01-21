@@ -41,94 +41,83 @@ AI-assisted development — это подход к разработке прог
 
 > **⚠️ Важно: Права администратора**
 >
-> - **Установка программ** (через `winget` или установщики) — требует прав администратора
-> - **Глобальная установка npm пакетов** (`npm install -g`) — требует прав администратора на Windows
+> - **Установка программ** (через установщики) — требует прав администратора
+> - **Глобальная установка npm пакетов** (`npm install -g`) — требует прав администратора
 > - **Использование программ** (`code`, `gh`, `firebase`, `claude`, `codex` и др.) — запускайте от обычного пользователя (НЕ от администратора)
 >
-> **Для Windows:** Запускайте PowerShell от имени администратора только для установки программ и глобальных npm пакетов. Все остальные команды выполняйте в обычном терминале.
+> Запускайте PowerShell от имени администратора только для установки программ и глобальных npm пакетов. Все остальные команды выполняйте в обычном терминале.
 
+### Установка инструментов
 
-**winget** — официальный менеджер пакетов от Microsoft для Windows 10/11, который позволяет устанавливать программы одной командой из PowerShell.
-#### Установка winget
+#### Node.js
+1. Скачайте установщик с [nodejs.org](https://nodejs.org/) (LTS-версия)
+2. Запустите и следуйте инструкциям
+3. Перезапустите терминал после установки
 
-<details>
-<summary><strong>Способ 1: Через Microsoft Store (рекомендуется)</strong></summary>
-
-1. Откройте **Microsoft Store**
-2. Найдите **"App Installer"** (или "Установщик приложений")
-3. Нажмите "Обновить" или "Получить"
-4. Перезапустите PowerShell после установки
-
-</details>
-
-<details>
-<summary><strong>Способ 2: Прямая загрузка</strong></summary>
-
-Если Microsoft Store недоступен, выполните в PowerShell от имени администратора:
-
+Проверка:
 ```powershell
-
-$progressPreference = 'silentlyContinue'
-Write-Host "Скачивание App Installer..." -ForegroundColor Cyan
-Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
-Write-Host "Установка..." -ForegroundColor Cyan
-Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller.msixbundle"
-Write-Host "Готово! Перезапустите PowerShell" -ForegroundColor Green
-
-```
-
-</details>
-
-**Без winget:** Если вы не хотите устанавливать winget, просто скачивайте установщики с официальных сайтов программ.
-
-### Установка остальных инструментов для AI
-
-```powershell
-# Node.js и npm
 node --version
 npm --version
-winget install OpenJS.NodeJS.LTS
+```
 
-# Git
+#### Git
+1. Скачайте установщик с [git-scm.com](https://git-scm.com/download/win)
+2. Запустите и следуйте инструкциям (настройки по умолчанию подходят)
+
+Проверка и настройка:
+```powershell
 git --version
-winget install Git.Git
 git config --global user.name "Ваше Имя"
 git config --global user.email "your.email@example.com"
+```
 
-# Visual Studio Code
-code --version
-winget install Microsoft.VisualStudioCode
+#### Visual Studio Code
+1. Скачайте установщик с [code.visualstudio.com](https://code.visualstudio.com/)
+2. Установите, отметив опции:
+   - ✅ Add "Open with Code" action to Windows Explorer file context menu
+   - ✅ Add "Open with Code" action to Windows Explorer directory context menu
+   - ✅ Add to PATH
 
-# Устанавливаем расширения Claude и Codex в vscode
+Расширения VS Code:
+```powershell
 code --install-extension anthropic.claude-code
 code --install-extension openai.codex
+```
 
-# Claude Desktop and terminal
-claude --version
-winget install Anthropic.Claude
+#### Claude Desktop
+1. Скачайте установщик с [claude.ai/download](https://claude.ai/download)
+2. Запустите и следуйте инструкциям
 
-# Codex Desktop and terminal
-codex --version
-#brew install --cask chatgpt
+#### ChatGPT Desktop
+1. Скачайте установщик с [openai.com/chatgpt/download](https://openai.com/chatgpt/download)
+2. Запустите и следуйте инструкциям
+
+#### Codex CLI
+```powershell
 npm i -g @openai/codex
+```
 
-# Github CLI
-gh --version
-gh auth status
-winget install GitHub.cli
+#### GitHub CLI
+1. Скачайте установщик с [cli.github.com](https://cli.github.com/)
+2. Запустите и следуйте инструкциям
+
+Авторизация:
+```powershell
 gh auth login
+```
 
-# Firebase CLI
-firebase --version
-firebase projects:list
+#### Firebase CLI
+```powershell
 npm i -g firebase-tools
 firebase login
+```
 
-# MCP Servers
+#### MCP серверы
+```powershell
 npm i -g @anthropic-ai/mcp-server-filesystem
 npm i -g @anthropic-ai/mcp-server-github
-
 ```
+
 </details>
 
 <details>
